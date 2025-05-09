@@ -3,7 +3,7 @@ import UploadForm from './components/UploadForm';
 
 const App = () => {
   return (
-    <div>
+    <div className='app-container'>
       <h1>resuMatch</h1>
       <UploadForm />
     </div>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import '../App.css';
 
 const UploadForm = () => {
     const [file, setFile] = useState(null);
@@ -27,7 +28,7 @@ const UploadForm = () => {
   };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="upload-form" onSubmit={handleSubmit}>
             <input
                 type="file"
                 accept=".pdf, .doc, .docx"
