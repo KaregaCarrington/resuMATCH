@@ -1,0 +1,3 @@
+# Root-level ignores (if needed)
+.DS_Store
+.env
