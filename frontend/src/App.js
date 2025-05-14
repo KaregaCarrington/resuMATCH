@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import './App.css';
 
 function App() {
-  const [resume, setResume] = useState('');
+  const [resume, setResume] = useState(null);
   const [jobDescription, setJobDescription] = useState('');
   const [result, setResult] = useState('');
 
@@ -19,12 +20,25 @@ function App() {
 
   return (
     <div>
-      <h1>AI Resume Customizer</h1>
-      <textarea placeholder="Paste your resume here" value={resume} onChange={e => setResume(e.target.value)} />
-      <textarea placeholder="Paste job description here" value={jobDescription} onChange={e => setJobDescription(e.target.value)} />
-      <button onClick={handleSubmit}>Customize Resume</button>
-      <h2>Customized Resume:</h2>
+      
+      <div className='input-container'>
+        <h1>AI Resume Customizer</h1>
+        <label className='upload-label'>
+          Upload your resume:
+          <input type='file' className="text-area" accept=".pdf,.doc,.docx,.txt" value={resume} onChange={e => setResume(e.target.value)} />
+        </label>
+        <textarea className='text-area' placeholder="Paste job description here" value={jobDescription} onChange={e => setJobDescription(e.target.value)} />
+        <button onClick={handleSubmit}>Customize Resume</button>
+      </div>
+      
       <pre>{result}</pre>
+      {result && (
+        <div className='download-container'>
+          <a href={URL.createObjectURL(new Blob([result], { type: 'text/plain' }))} download="customized_resume.txt">
+            Download Customized Resume
+          </a>
+        </div>
+      )}
     </div>
   );
 }
